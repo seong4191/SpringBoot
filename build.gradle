@@ -35,13 +35,24 @@ dependencies {
     testAnnotationProcessor('org.projectlombok:lombok:1.18.22')
 
     //junit
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.8.2') {
+        exclude module: 'junit-platform-commons'
+    }
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.2')
+    testRuntimeOnly('org.junit.platform:junit-platform-engine:1.8.2')
+    testRuntimeOnly('org.junit.platform:junit-platform-commons:1.8.2')
 
     // inMemory Database
     implementation('com.h2database:h2')
 
     implementation('org.springframework.boot:spring-boot-starter-mustache')
+
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
+
+    implementation('org.springframework.session:spring-session-jdbc')
+
+    testImplementation('org.springframework.security:spring-security-test')
+
 }
 
 test {
